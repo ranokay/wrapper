@@ -6,8 +6,16 @@ services:
       args:
         TARGET_ARCH: aarch64
         NDK_VERSION: 23
+    env_file:
+      - .env
     volumes:
       - ./rootfs/data:/app/rootfs/data
     environment:
       USERNAME: ${USERNAME}
       PASSWORD: ${PASSWORD}
+      ANDROID_ROOT: /system
+      ANDROID_DATA: /data
+    ports:
+      - "10020:10020"
+      - "20020:20020"
+      - "30020:30020"
